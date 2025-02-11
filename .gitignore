@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+.claude
+*.log
+dist/
+CLAUDE.md
+.env
+.vscode/
+*.tmp

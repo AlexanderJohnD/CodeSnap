@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeSnap - Code Snippet Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CodeSnap</h1>
+            <p>Manage your code snippets</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="add-snippet">
+                <h2>Add New Snippet</h2>
+                <input type="text" id="snippet-title" placeholder="Snippet title">
+                <select id="language">
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="java">Java</option>
+                </select>
+                <textarea id="code-input" placeholder="Paste your code here..."></textarea>
+                <input type="text" id="tags" placeholder="Tags (comma separated)">
+                <button id="save-btn">Save Snippet</button>
+            </div>
+            
+            <div class="snippets-list">
+                <h2>Your Snippets</h2>
+                <div class="search-bar">
+                    <input type="text" id="search" placeholder="Search snippets...">
+                </div>
+                <div id="snippets-container">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
