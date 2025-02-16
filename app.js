@@ -19,6 +19,11 @@ class CodeSnap {
     attachEventListeners() {
         this.saveBtn.addEventListener('click', () => this.saveSnippet());
         this.searchInput.addEventListener('input', () => this.filterSnippets());
+        this.snippetsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-btn')) {
+                this.deleteSnippet(parseInt(e.target.dataset.id));
+            }
+        });
     }
 
     loadSnippets() {
@@ -72,7 +77,10 @@ class CodeSnap {
             <div class="snippet-item">
                 <div class="snippet-header">
                     <span class="snippet-title">${this.escapeHtml(snippet.title)}</span>
-                    <span class="snippet-language">${snippet.language}</span>
+                    <div class="snippet-actions">
+                        <span class="snippet-language">${snippet.language}</span>
+                        <button class="delete-btn" data-id="${snippet.id}">Delete</button>
+                    </div>
                 </div>
                 <pre class="snippet-code">${this.escapeHtml(snippet.code)}</pre>
                 <div class="snippet-tags">
@@ -90,6 +98,14 @@ class CodeSnap {
             snippet.tags.some(tag => tag.toLowerCase().includes(query))
         );
         this.renderSnippets(filtered);
+    }
+
+    deleteSnippet(id) {
+        if (confirm('Are you sure you want to delete this snippet?')) {
+            this.snippets = this.snippets.filter(snippet => snippet.id !== id);
+            this.saveSnippets();
+            this.renderSnippets();
+        }
     }
 
     escapeHtml(text) {

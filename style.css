@@ -102,6 +102,12 @@ button:hover {
     margin-bottom: 10px;
 }
 
+.snippet-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .snippet-title {
     font-weight: bold;
     color: #2c3e50;
@@ -128,6 +134,21 @@ button:hover {
 .snippet-tags {
     color: #7f8c8d;
     font-size: 12px;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
 }
 
 @media (max-width: 768px) {
