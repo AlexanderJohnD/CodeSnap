@@ -53,6 +53,16 @@ header p {
     padding-bottom: 10px;
 }
 
+.snippets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.snippets-header h2 {
+    margin-bottom: 0;
+}
+
 input[type="text"], select, textarea {
     width: 100%;
     padding: 12px;

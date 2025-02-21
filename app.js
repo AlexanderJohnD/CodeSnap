@@ -14,11 +14,13 @@ class CodeSnap {
         this.saveBtn = document.getElementById('save-btn');
         this.searchInput = document.getElementById('search');
         this.snippetsContainer = document.getElementById('snippets-container');
+        this.exportBtn = document.getElementById('export-btn');
     }
 
     attachEventListeners() {
         this.saveBtn.addEventListener('click', () => this.saveSnippet());
         this.searchInput.addEventListener('input', () => this.filterSnippets());
+        this.exportBtn.addEventListener('click', () => this.exportSnippets());
         this.snippetsContainer.addEventListener('click', (e) => {
             if (e.target.classList.contains('delete-btn')) {
                 this.deleteSnippet(parseInt(e.target.dataset.id));
@@ -106,6 +108,31 @@ class CodeSnap {
             this.saveSnippets();
             this.renderSnippets();
         }
+    }
+
+    exportSnippets() {
+        if (this.snippets.length === 0) {
+            alert('No snippets to export');
+            return;
+        }
+
+        const exportData = {
+            exportedAt: new Date().toISOString(),
+            count: this.snippets.length,
+            snippets: this.snippets
+        };
+
+        const dataStr = JSON.stringify(exportData, null, 2);
+        const blob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `codesnap-export-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     }
 
     escapeHtml(text) {
