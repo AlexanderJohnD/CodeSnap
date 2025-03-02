@@ -24,6 +24,8 @@ class CodeSnap {
         this.snippetsContainer.addEventListener('click', (e) => {
             if (e.target.classList.contains('delete-btn')) {
                 this.deleteSnippet(parseInt(e.target.dataset.id));
+            } else if (e.target.classList.contains('copy-btn')) {
+                this.copySnippet(parseInt(e.target.dataset.id));
             }
         });
     }
@@ -81,6 +83,7 @@ class CodeSnap {
                     <span class="snippet-title">${this.escapeHtml(snippet.title)}</span>
                     <div class="snippet-actions">
                         <span class="snippet-language">${snippet.language}</span>
+                        <button class="copy-btn" data-id="${snippet.id}">Copy</button>
                         <button class="delete-btn" data-id="${snippet.id}">Delete</button>
                     </div>
                 </div>
@@ -107,6 +110,24 @@ class CodeSnap {
             this.snippets = this.snippets.filter(snippet => snippet.id !== id);
             this.saveSnippets();
             this.renderSnippets();
+        }
+    }
+
+    copySnippet(id) {
+        const snippet = this.snippets.find(s => s.id === id);
+        if (snippet) {
+            navigator.clipboard.writeText(snippet.code).then(() => {
+                const copyBtn = document.querySelector(`button.copy-btn[data-id="${id}"]`);
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                copyBtn.style.backgroundColor = '#27ae60';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.style.backgroundColor = '';
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy to clipboard');
+            });
         }
     }
 
