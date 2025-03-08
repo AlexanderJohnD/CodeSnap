@@ -43,7 +43,11 @@
             <div class="snippets-list">
                 <div class="snippets-header">
                     <h2>Your Snippets</h2>
-                    <button id="export-btn">Export All</button>
+                    <div class="header-buttons">
+                        <input type="file" id="import-file" accept=".json" style="display: none;">
+                        <button id="import-btn">Import</button>
+                        <button id="export-btn">Export All</button>
+                    </div>
                 </div>
                 <div class="search-bar">
                     <input type="text" id="search" placeholder="Search snippets...">
