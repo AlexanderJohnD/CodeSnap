@@ -22,6 +22,28 @@ header {
     margin-bottom: 40px;
 }
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#theme-toggle {
+    background: none;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: #3498db;
+    transform: scale(1.1);
+}
+
 header h1 {
     color: #2c3e50;
     font-size: 2.5em;
@@ -99,7 +121,17 @@ button:hover {
 }
 
 .search-bar {
+    display: flex;
+    gap: 10px;
     margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1;
+}
+
+.search-bar select {
+    min-width: 120px;
 }
 
 .snippet-item {
@@ -207,4 +239,46 @@ button:hover {
     .container {
         padding: 10px;
     }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-theme .add-snippet,
+body.dark-theme .snippets-list {
+    background-color: #2d2d2d;
+    border: 1px solid #404040;
+}
+
+body.dark-theme input[type="text"],
+body.dark-theme select,
+body.dark-theme textarea {
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+}
+
+body.dark-theme .snippet-item {
+    background-color: #333;
+    border: 1px solid #555;
+}
+
+body.dark-theme .snippet-code {
+    background-color: #1e1e1e;
+    color: #f8f8f2;
+}
+
+body.dark-theme #theme-toggle {
+    border-color: #e0e0e0;
+}
+
+body.dark-theme #theme-toggle:hover {
+    background-color: #555;
 }

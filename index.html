@@ -9,8 +9,13 @@
 <body>
     <div class="container">
         <header>
-            <h1>CodeSnap</h1>
-            <p>Manage your code snippets</p>
+            <div class="header-content">
+                <div>
+                    <h1>CodeSnap</h1>
+                    <p>Manage your code snippets</p>
+                </div>
+                <button id="theme-toggle">🌙</button>
+            </div>
         </header>
         
         <div class="main-content">
@@ -51,6 +56,9 @@
                 </div>
                 <div class="search-bar">
                     <input type="text" id="search" placeholder="Search snippets...">
+                    <select id="tag-filter">
+                        <option value="">All Tags</option>
+                    </select>
                 </div>
                 <div id="snippets-container">
                 </div>
